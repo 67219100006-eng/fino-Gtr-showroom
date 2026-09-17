@@ -1,0 +1,734 @@
+```html
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT-R Showroom</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:'Kanit',sans-serif;
+    overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ff0000;
+}
+
+/* LAYOUT */
+
+.wrapper{
+    display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:320px;
+    min-height:100vh;
+    background:#070707;
+    border-right:1px solid #181818;
+    padding:20px;
+}
+
+.logo{
+    font-size:60px;
+    font-family:'Orbitron',sans-serif;
+    font-weight:700;
+    line-height:0.9;
+    margin-bottom:30px;
+}
+
+.logo span{
+    color:#ff0000;
+}
+
+.sidebar-title{
+    font-size:24px;
+    margin-bottom:20px;
+    font-weight:600;
+}
+
+/* CAR MENU */
+
+.car-menu{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.car-item{
+    background:#0d0d0d;
+    border:1px solid #202020;
+    border-radius:18px;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.car-item:hover{
+    border-color:#ff0000;
+    transform:translateX(5px);
+}
+
+.car-info h3{
+    color:#ff0000;
+    font-size:28px;
+}
+
+.car-info p{
+    color:#bbb;
+}
+
+.car-item img{
+    width:120px;
+}
+
+/* SEARCH FILTER */
+
+.filter-box{
+    margin-top:30px;
+    background:#0d0d0d;
+    border-radius:20px;
+    padding:20px;
+    border:1px solid #1a1a1a;
+}
+
+.filter-box h2{
+    margin-bottom:20px;
+}
+
+.filter{
+    margin-bottom:15px;
+}
+
+.filter select{
+    width:100%;
+    background:#151515;
+    border:1px solid #333;
+    color:white;
+    padding:14px;
+    border-radius:12px;
+}
+
+.search-btn{
+    width:100%;
+    padding:15px;
+    background:linear-gradient(90deg,#ff0000,#9b0000);
+    border:none;
+    border-radius:12px;
+    color:white;
+    font-size:18px;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+/* MAIN */
+
+.main{
+    flex:1;
+    padding:20px 30px;
+}
+
+/* NAVBAR */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.nav-menu{
+    display:flex;
+    gap:35px;
+}
+
+.nav-menu a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.nav-menu a:hover{
+    color:#ff0000;
+}
+
+.nav-right{
+    display:flex;
+    gap:15px;
+}
+
+.nav-btn{
+    border:1px solid #222;
+    padding:12px 18px;
+    border-radius:14px;
+    background:#0f0f0f;
+}
+
+/* HERO */
+
+.hero{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+/* GALLERY */
+
+.gallery{
+    background:#090909;
+    border:1px solid #181818;
+    border-radius:25px;
+    padding:20px;
+}
+
+.main-image img{
+    width:100%;
+    border-radius:20px;
+}
+
+.thumbnail{
+    margin-top:15px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.thumbnail img{
+    width:100%;
+    border-radius:15px;
+    border:2px solid #222;
+    transition:.3s;
+}
+
+.thumbnail img:hover{
+    border-color:#ff0000;
+}
+
+/* INFO */
+
+.info-panel{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.car-detail{
+    background:#090909;
+    border:1px solid #181818;
+    border-radius:25px;
+    padding:25px;
+}
+
+.car-detail h1{
+    font-size:58px;
+    line-height:1;
+    margin-top:10px;
+}
+
+.available{
+    display:inline-block;
+    background:#0f8f2f;
+    padding:10px 18px;
+    border-radius:12px;
+    margin-top:20px;
+}
+
+.price{
+    font-size:55px;
+    color:#ff0000;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.line-btn{
+    display:block;
+    width:100%;
+    padding:18px;
+    text-align:center;
+    background:linear-gradient(90deg,#ff0000,#a00000);
+    border-radius:15px;
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+}
+
+/* SPEC */
+
+.spec-box{
+    background:#07101a;
+    border:1px solid #14335f;
+    border-radius:25px;
+    padding:25px;
+}
+
+.spec-box h2{
+    color:#5ea4ff;
+    margin-bottom:20px;
+}
+
+.spec{
+    display:flex;
+    justify-content:space-between;
+    padding:14px 0;
+    border-bottom:1px solid #18212d;
+}
+
+/* FEATURED */
+
+.section-title{
+    margin:40px 0 20px;
+    font-size:38px;
+    font-family:'Orbitron',sans-serif;
+}
+
+.car-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#0b0b0b;
+    border:1px solid #1b1b1b;
+    border-radius:20px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#ff0000;
+}
+
+.card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card-content h3{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.card-content p{
+    color:#aaa;
+}
+
+.card-price{
+    margin-top:15px;
+    font-size:34px;
+    color:#ff0000;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:50px;
+    border-top:1px solid #1d1d1d;
+    padding-top:25px;
+    display:flex;
+    justify-content:space-between;
+    color:#999;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1500px){
+
+.car-grid{
+    grid-template-columns:repeat(3,1fr);
+}
+
+}
+
+@media(max-width:1200px){
+
+.wrapper{
+    flex-direction:column;
+}
+
+.sidebar{
+    width:100%;
+    min-height:auto;
+}
+
+.hero{
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.nav-menu{
+    display:none;
+}
+
+.car-grid{
+    grid-template-columns:1fr;
+}
+
+.thumbnail{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.car-detail h1{
+    font-size:40px;
+}
+
+.price{
+    font-size:38px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            GT<br><span>R</span>
+        </div>
+
+        <div class="sidebar-title">
+            เลือกรุ่นรถ
+        </div>
+
+        <div class="car-menu">
+
+            <div class="car-item">
+                <div class="car-info">
+                    <h3>R34</h3>
+                    <p>GT-R R34 V-Spec II</p>
+                    <small>1999</small>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800">
+            </div>
+
+            <div class="car-item">
+                <div class="car-info">
+                    <h3>R35</h3>
+                    <p>GT-R R35 Nismo</p>
+                    <small>2021</small>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800">
+            </div>
+
+            <div class="car-item">
+                <div class="car-info">
+                    <h3>R36</h3>
+                    <p>GT-R R36 Concept</p>
+                    <small>2024</small>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=800">
+            </div>
+
+            <div class="car-item">
+                <div class="car-info">
+                    <h3>R50</h3>
+                    <p>GT-R50 Italdesign</p>
+                    <small>2020</small>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=800">
+            </div>
+
+        </div>
+<img src="D:\web\image\no.jpg"width="250px">
+        <!-- FILTER -->
+
+        <div class="filter-box">
+
+            <h2>ตัวกรองการค้นหา</h2>
+
+            <div class="filter">
+                <select>
+                    <option>รุ่นทั้งหมด</option>
+                    <option>R34</option>
+                    <option>R35</option>
+                    <option>R36</option>
+                    <option>R50</option>
+                </select>
+            </div>
+
+            <div class="filter">
+                <select>
+                    <option>สีทั้งหมด</option>
+                    <option>Bayside Blue</option>
+                    <option>Pearl White</option>
+                    <option>Midnight Purple</option>
+                </select>
+            </div>
+
+            <div class="filter">
+                <select>
+                    <option>ช่วงราคา</option>
+                    <option>10-20 ล้าน</option>
+                    <option>20-40 ล้าน</option>
+                    <option>50 ล้าน+</option>
+                </select>
+            </div>
+
+            <button class="search-btn">
+                ค้นหารถ
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- NAVBAR -->
+
+        <div class="navbar">
+
+            <div class="nav-menu">
+                <a href="#">หน้าแรก</a>
+                <a href="#">รุ่นรถทั้งหมด</a>
+                <a href="#">รถเข้าใหม่</a>
+                <a href="#">บริการของเรา</a>
+                <a href="#">ข่าวสาร</a>
+                <a href="#">ติดต่อเรา</a>
+            </div>
+
+            <div class="nav-right">
+                <div class="nav-btn">ค้นหา</div>
+                <div class="nav-btn">รายการโปรด</div>
+                <div class="nav-btn">เข้าสู่ระบบ</div>
+            </div>
+
+        </div>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <!-- GALLERY -->
+
+            <div class="gallery">
+
+                <div class="main-image">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1400">
+                </div>
+
+                <div class="thumbnail">
+
+                    <img src=" https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800">
+
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800">
+
+                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800">
+
+                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=800">
+
+                </div>
+
+            </div>
+
+            <!-- INFO -->
+
+            <div class="info-panel">
+
+                <div class="car-detail">
+
+                    <p>1999 Nissan Skyline</p>
+
+                    <h1>
+                        GT-R R34
+                    </h1>
+
+                    <h2>V-Spec II</h2>
+
+                    <div class="available">
+                        AVAILABLE / พร้อมส่งมอบ
+                    </div>
+
+                    <div class="price">
+                        18,900,000 ฿
+                    </div>
+
+                    <a href="#" class="line-btn">
+                        สอบถามข้อมูล / นัดหมายดูรถ
+                    </a>
+
+                </div>
+
+                <div class="spec-box">
+
+                    <h2>SPECIFICATIONS</h2>
+
+                    <div class="spec">
+                        <span>Engine</span>
+                        <span>RB26DETT</span>
+                    </div>
+
+                    <div class="spec">
+                        <span>Transmission</span>
+                        <span>6MT Getrag</span>
+                    </div>
+
+                    <div class="spec">
+                        <span>Drive System</span>
+                        <span>AWD</span>
+                    </div>
+
+                    <div class="spec">
+                        <span>Color</span>
+                        <span>Bayside Blue</span>
+                    </div>
+
+                    <div class="spec">
+                        <span>Mileage</span>
+                        <span>62,000 km</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- COLLECTION -->
+
+        <h2 class="section-title">
+            GT-R COLLECTION
+        </h2>
+
+        <div class="car-grid">
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200">
+
+                <div class="card-content">
+
+                    <h3>GT-R R34 V-Spec II</h3>
+
+                    <p>Bayside Blue</p>
+
+                    <div class="card-price">
+                        18,900,000 ฿
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200">
+
+                <div class="card-content">
+
+                    <h3>GT-R R35 Nismo</h3>
+
+                    <p>Pearl White</p>
+
+                    <div class="card-price">
+                        24,500,000 ฿
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1200">
+
+                <div class="card-content">
+
+                    <h3>GT-R R36 Concept</h3>
+
+                    <p>Midnight Purple</p>
+
+                    <div class="card-price">
+                        32,900,000 ฿
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1200">
+
+                <div class="card-content">
+
+                    <h3>GT-R50 Italdesign</h3>
+
+                    <p>Limited 50 Units</p>
+
+                    <div class="card-price">
+                        95,000,000 ฿
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+            <div>
+                © 2026 GT-R SHOWROOM THAILAND
+            </div>
+
+            <div>
+                MON - SUN 09:00 - 18:00
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
+```
